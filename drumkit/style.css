@@ -1,0 +1,30 @@
+body{
+    background-image: url("https://i.picsum.photos/id/145/4288/2848.jpg?hmac=UkhcwQUE-vRBFXzDN1trCwWigpm7MXG5Bl5Ji103QG4");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+.soundbar{
+    display: grid;
+    grid-template-columns: repeat(1, 200px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 20px;
+    height: 100vh;
+}
+
+.soundbar audio:hover{
+    cursor: pointer;
+}
+
+.soundbar button{
+    border-radius: 10px;
+}
+
+.soundbar button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
