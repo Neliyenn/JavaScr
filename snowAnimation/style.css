@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+}
+
+canvas{
+    background-image: url('snow.png');
+    background-color: rgb(133, 166, 228);
+}
+
+img{
+    display: none;
+}

@@ -73,7 +73,7 @@ class Finish {
 
 }
 
-const ball = new Ball();
+let ball = new Ball();
 
 let hole2 = new Hole(Math.random() * 600, Math.random() * 500, 30, 'grey');
 let hole3 = new Hole(Math.random() * 600, Math.random() * 500, 30, 'grey');
