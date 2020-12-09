@@ -23,8 +23,6 @@ class Ball {
     }
     
     update(deltaTime){
-        if(deltaTime) return;
-
         this.x += 5 / deltaTime;
 
     }
@@ -50,7 +48,7 @@ class Hole {
 
     draw(){
         ctx.beginPath();
-        ctx.arc(this. x, this.y, this.radius, 0, Math.PI*2, false);
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
         ctx.fillStyle = this.color;
         ctx.fill();
     }
@@ -86,7 +84,7 @@ const finish = new Finish(700, 100, 30, 'orange');
 // window.addEventListener('deviceorientation', onDeviceMove);
 
 // function onDeviceMove(ev){
-//     console.log(ev.alfa, ev.beta, ev.gamma);
+//     console.log(ev.alpha, ev.beta, ev.gamma);
 // }
 
 
