@@ -8,11 +8,16 @@ canvas.width = 800;
 canvas.height = 700;
 
 class Ball {
-    constructor(x, y, radius, color, velocity){
-        this.x = 100;
-        this.y = 600;
-        this.radius = 20;
-        this.color = 'red';
+    constructor(x, y, radius, color, speed){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.speed = speed;
+
+        // this.dx = ev.alpha;
+        // this.dy = ev.beta;
+      
     }
 
     draw(){
@@ -22,8 +27,11 @@ class Ball {
         ctx.fill();
     }
     
-    update(deltaTime){
-        this.x += 5 / deltaTime;
+    update(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.draw(ctx);
+        this.x += this.dx;
+        this.y += this.dy;
 
     }
 }
@@ -35,16 +43,6 @@ class Hole {
         this.radius = radius;
         this.color = color;
     }
-
-    // GetX()
-    // {
-    //     return this.x;
-    // }
-
-    // GetY()
-    // {
-    //     return this.y;
-    // }
 
     draw(){
         ctx.beginPath();
@@ -71,68 +69,36 @@ class Finish {
 
 }
 
-let ball = new Ball();
+let ball = new Ball(100, 600, 20, 'red', 5,);
+ball.draw();
 
 let hole2 = new Hole(Math.random() * 600, Math.random() * 500, 30, 'grey');
 let hole3 = new Hole(Math.random() * 600, Math.random() * 500, 30, 'grey');
 let hole4 = new Hole(Math.random() * 600, Math.random() * 500, 30, 'grey');
 let hole5 = new Hole(Math.random() * 600, Math.random() * 500, 30, 'grey');
 let hole1 = new Hole(Math.random() * 600, Math.random() * 500, 30, 'grey');
+hole1.draw();
+hole2.draw();
+hole3.draw();
+hole4.draw();
+hole5.draw();
 
 const finish = new Finish(700, 100, 30, 'orange');
+finish.draw();
 
-// window.addEventListener('deviceorientation', onDeviceMove);
+window.addEventListener('deviceorientation', onDeviceMove);
 
-// function onDeviceMove(ev){
-//     console.log(ev.alpha, ev.beta, ev.gamma);
-// }
+function onDeviceMove(ev){
+    dx = ev.alpha/60;
+    dy = ev.beta/60;
+}
 
-
-// function setHoles() {
-//     let i;
-//     for(i = 0; i < 30; i++){
-//         // let cordX = 0;
-//         // let cordY = 0;
-//         // let checkX = true;
-//         // let checkY = true;
-
-//         // do
-//         // {
-//         //     cordX = Math.random()*1400;
-//         //     cordY = Math.random()*900;
-            
-//         //     checkX = Math.abs(cordX - 100) < 50; 
-//         //     checkY = Math.abs(cordY - Math.random()*800) < 50; 
-//         // }
-//         // while(checkX || checkY);
-
-//            let hole = new Hole(Math.random() * 1400, Math.random() * 900, 30, 'grey');
-//         // hole.draw();
-//     }
-
-// }
-
-// setHoles();
-
-let lastTime = 0;
-
-function game(timestamp){
-    let deltaTime = timestamp - lastTime;
-    lastTime = timestamp;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ball.update(deltaTime);
-    ball.draw();
-    hole1.draw();
-    hole2.draw();
-    hole3.draw();
-    hole4.draw();
-    hole5.draw();
-    finish.draw();
-
+function game(){
+    ball.update();
     requestAnimationFrame(game);
 }
 
+onDeviceMove(ev);
 requestAnimationFrame(game);
 
 

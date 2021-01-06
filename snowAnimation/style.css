@@ -1,5 +1,7 @@
 body{
     margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 canvas{
@@ -7,6 +9,7 @@ canvas{
     background-color: rgb(133, 166, 228);
 }
 
-img{
-    display: none;
+.snowing canvas{
+    position: absolute;
+    z-index: -1;
 }
