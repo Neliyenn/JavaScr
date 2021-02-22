@@ -64,7 +64,7 @@ function displayNote(note)
     let out = '<h2>' + noteArray[note].title + '</h2>'; 
     out += '<h4>Date: ' + new Date(noteArray[note].date).toDateString() + '</h4>';
     out += '<p>' + noteArray[note].body + '</p>';
-    out += '<button id="btnDelete>Delete</button>';
+    out += '<button id="btnDelete">Delete</button>';
     document.getElementById('noteDispaly').innerHTML = out;
     document.getElementById('btnDelete').onclick = function(){
         noteArray.splice(note,1);
