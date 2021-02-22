@@ -20,7 +20,7 @@ function init()
     {
         noteArray = JSON.parse(localStorage.getItem('noteData'));
 
-        for(let x = 0; x < noteArray.lenght; x++)
+        for(let x = 0; x < noteArray.length; x++)
         {
             out += '<option value=' + x + '>';
             out += noteArray[x].title;
@@ -65,7 +65,7 @@ function displayNote(note)
     out += '<h4>Date: ' + new Date(noteArray[note].date).toDateString() + '</h4>';
     out += '<p>' + noteArray[note].body + '</p>';
     out += '<button id="btnDelete">Delete</button>';
-    document.getElementById('noteDispaly').innerHTML = out;
+    document.getElementById('noteDisplay').innerHTML = out;
     document.getElementById('btnDelete').onclick = function(){
         noteArray.splice(note,1);
         localStorage.setItem('noteData', JSON.stringify(noteArray));
