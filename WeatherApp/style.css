@@ -8,7 +8,7 @@ body{
     font-family: "Nunito",sans-serif;
 }
 
-.input{
+.add-weather {
     text-align: center;
     margin: 100px 0;
 }
@@ -25,7 +25,7 @@ input[type="text"]{
     padding: 10px 10px;
 }
 
-input[type="submit"]{
+button[type="add"]{
     height: 50px;
     width: 100px;
     background:rgb(176, 192, 219);
@@ -38,4 +38,10 @@ input[type="submit"]{
 
 .display{
     text-align: center;
+    font-size: large;
+    background-color: cadetblue;
+    width: 200px;
+    border-radius: 5px;
+    margin: 100px 300px;
+    padding: 10px 10px;
 }
