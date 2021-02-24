@@ -8,12 +8,12 @@ body{
     font-family: "Nunito",sans-serif;
 }
 
-.add-weather {
+.addWeather {
     text-align: center;
     margin: 100px 0;
 }
 
-.add-weather h1{
+.addWeather h1{
     font-size: 40px;
     padding-bottom: 20px;
  }
