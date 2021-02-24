@@ -36,7 +36,7 @@ button[type="add"]{
     border-radius: 5px;
 }
 
-button[type="delete"]{
+button[type="clear"]{
     height: 50px;
     width: 100px;
     background:rgb(176, 192, 219);
@@ -62,16 +62,4 @@ main{
     border-radius: 5px;
     padding: 10px;
     margin: 20px;
-}
-
-.container:hover{
-    text-align: center;
-    font-size: large;
-    background-color: cadetblue;
-    width: 200px;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 20px;
-    cursor: pointer;
-    border: 3px grey solid;
 }

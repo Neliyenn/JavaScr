@@ -3,7 +3,10 @@ const main = document.querySelector('main');
 let weatherArray = [];
 let input = document.querySelector('.city');
 let btnAdd = document.querySelector('.newWeather');
-let btnDelete = document.querySelector('.deleteWeather');
+let btnClear = document.querySelector('.clearWeather');
+
+lastFromStorage();
+
 btnAdd.addEventListener('click', function(){
     let elements = {};
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&units=metric&appid=59ecab719377b365219b006f47278313')
@@ -23,7 +26,7 @@ btnAdd.addEventListener('click', function(){
         .catch(err => alert('Invalid city name'));
 });
 
-btnDelete.addEventListener('click', function(){
+btnClear.addEventListener('click', function(){
     localStorage.removeItem('savedForecast');
     // console.log(localStorage); poprawnie usuwa caly localstorage
     main.innerHTML = '';
@@ -57,15 +60,24 @@ function displayWeather(elements){
     displayWeather.appendChild(tempValue);
     displayWeather.appendChild(windValue);
     displayWeather.appendChild(presValue);
-
-    displayWeather.addEventListener('click', function(){
-        deleteWeather(displayWeather);
-    });
 }
 
-function deleteWeather(tags){
-    tags.remove();
+function lastFromStorage(){
+    weatherArray = [];
+    let fromStorage = JSON.parse(localStorage.getItem('savedForecast'));
+    if(fromStorage != null && fromStorage != '')
+    {
+        const storedWeather = fromStorage;
+        if(storedWeather.length != 0){
+            for(let x = 0; x < storedWeather.length; x++)
+            {
+                weatherArray.push(storedWeather[x]); 
+                // console.log(weatherArray); widac zapisywaie z kazdym wyszukaniem, poprawnie dopisuje tablice
+            }
+        }
+    }
+
+    for(let y = 0; y < weatherArray.length; y++){
+        displayWeather(weatherArray[y]);
+    }
 }
-
-
-
