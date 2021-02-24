@@ -36,6 +36,17 @@ button[type="add"]{
     border-radius: 5px;
 }
 
+button[type="delete"]{
+    height: 50px;
+    width: 100px;
+    background:rgb(176, 192, 219);
+    font-family: "Nunito",sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
 main{
     width: 70%;
     display: flex;

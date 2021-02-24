@@ -1,24 +1,35 @@
 const main = document.querySelector('main');
 
+let weatherArray = [];
 let input = document.querySelector('.city');
-let button = document.querySelector('.newWeatherForecast');
-button.addEventListener('click', function(){
-    let weather = {};
+let btnAdd = document.querySelector('.newWeather');
+let btnDelete = document.querySelector('.deleteWeather');
+btnAdd.addEventListener('click', function(){
+    let elements = {};
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&units=metric&appid=59ecab719377b365219b006f47278313')
         .then(response => response.json())
         .then(data => {
-            weather.city = data['name'];
-            weather.desc = data['weather'][0]['description'];
-            weather.temp = Math.round(data['main']['temp']);
-            weather.image = data['weather'][0]['icon'];
-            weather.wind = data['wind']['speed'];
-            weather.pressure = data['main']['pressure'];
+            elements.city = data['name'];
+            elements.desc = data['weather'][0]['description'];
+            elements.temp = Math.round(data['main']['temp']);
+            elements.img = data['weather'][0]['icon'];
+            elements.wind = data['wind']['speed'];
+            elements.pressure = data['main']['pressure'];
+            weatherArray.push(elements);
+            localStorage.setItem('savedForecast', JSON.stringify(weatherArray));
+            // console.log(localStorage); localstorage dziala poprawnie
         })
-        .then(() => displayWeather(weather))
+        .then(() => displayWeather(elements))
         .catch(err => alert('Invalid city name'));
 });
 
-function displayWeather(weather){
+btnDelete.addEventListener('click', function(){
+    localStorage.removeItem('savedForecast');
+    // console.log(localStorage); poprawnie usuwa caly localstorage
+    main.innerHTML = '';
+});
+
+function displayWeather(elements){
     const displayWeather = document.createElement('div');
     const cityName = document.createElement('h1');
     const weatherImage = document.createElement('p');
@@ -33,12 +44,12 @@ function displayWeather(weather){
     descValue.classList.add('desc');
     windValue.classList.add('wind');
     presValue.classList.add('pressure');
-    cityName.innerHTML = weather.city;
-    weatherImage.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather.image}@2x.png"/>`;
-    descValue.innerHTML = weather.desc;
-    tempValue.innerHTML = weather.temp + ' °C';
-    windValue.innerHTML = 'Wind: ' + weather.wind + ' m/s';
-    presValue.innerHTML = 'Pressure: ' + weather.pressure + ' hPa';
+    cityName.innerHTML = elements.city;
+    weatherImage.innerHTML = `<img src="http://openweathermap.org/img/wn/${elements.img}@2x.png"/>`;
+    descValue.innerHTML = elements.desc;
+    tempValue.innerHTML = elements.temp + ' °C';
+    windValue.innerHTML = 'Wind: ' + elements.wind + ' m/s';
+    presValue.innerHTML = 'Pressure: ' + elements.pressure + ' hPa';
     main.appendChild(displayWeather);
     displayWeather.appendChild(cityName);
     displayWeather.appendChild(weatherImage);
@@ -55,3 +66,6 @@ function displayWeather(weather){
 function deleteWeather(tags){
     tags.remove();
 }
+
+
+
