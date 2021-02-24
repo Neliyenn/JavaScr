@@ -13,6 +13,11 @@ body{
     margin: 100px 0;
 }
 
+.add-weather h1{
+    font-size: 40px;
+    padding-bottom: 20px;
+ }
+
 input[type="text"]{
     height: 50px;
     width: 600px;
@@ -52,14 +57,24 @@ main{
     display: flex;
     margin-left: auto;
     margin-right: auto;
+    flex-wrap: wrap;
 }
 
-.container{
+.displayWeather{
     text-align: center;
     font-size: large;
     background-color: cadetblue;
-    width: 200px;
-    border-radius: 5px;
-    padding: 10px;
+    width: 14em;
+    border-radius: 20px;
+    padding: 20px;
     margin: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
+
+.desc{
+    text-transform: uppercase;
+}
+
+
+

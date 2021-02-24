@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const main = document.querySelector('main');
 
 let weatherArray = [];
@@ -41,16 +42,16 @@ function displayWeather(elements){
     const windValue = document.createElement('p');
     const presValue = document.createElement('p');
 
-    displayWeather.classList.add('container');
-    cityName.classList.add('city');
+    displayWeather.classList.add('displayWeather');
+    cityName.classList.add('cityName');
     weatherImage.classList.add('img');
     descValue.classList.add('desc');
     windValue.classList.add('wind');
     presValue.classList.add('pressure');
     cityName.innerHTML = elements.city;
     weatherImage.innerHTML = `<img src="http://openweathermap.org/img/wn/${elements.img}@2x.png"/>`;
-    descValue.innerHTML = elements.desc;
-    tempValue.innerHTML = elements.temp + ' °C';
+    descValue.innerHTML = elements.desc + '<br><br>'; 
+    tempValue.innerHTML = 'Temp: ' + elements.temp + ' °C';
     windValue.innerHTML = 'Wind: ' + elements.wind + ' m/s';
     presValue.innerHTML = 'Pressure: ' + elements.pressure + ' hPa';
     main.appendChild(displayWeather);
