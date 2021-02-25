@@ -50,6 +50,7 @@ function onKeyPress(ev) {
 function onRecordBtnClick() {
     recordStartTime = Date.now();
 }
+
 function onPlayBtnClick() {
     for (let index = 0; index < recordedSounds.length; index++) {
         const soundObj = recordedSounds[index];
