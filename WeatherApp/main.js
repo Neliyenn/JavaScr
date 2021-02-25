@@ -25,6 +25,7 @@ btnAdd.addEventListener('click', function(){
         })
         .then(() => displayWeather(elements))
         .catch(err => alert('Invalid city name'));
+    input.value = '';
 });
 
 btnClear.addEventListener('click', function(){
